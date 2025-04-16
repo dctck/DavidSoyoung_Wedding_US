@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Wedding | 장진수 & 진소영</title>
+
+  <meta property="og:title" content="진수 & 소영 결혼합니다!">
+  <meta property="og:description" content="2025년 5월 31일, 트라디노이에서">
+  <meta property="og:image" content="https://dctck.github.io/DavidSoyoung-Wedding/Photo_Header.png">
+  <meta property="og:url" content="https://dctck.github.io/DavidSoyoung-Wedding/">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://dctck.github.io/DavidSoyoung-Wedding/">
+  <meta name="twitter:title" content="진수 & 소영 결혼합니다!">
+  <meta name="twitter:description" content="2025년 5월 31일, 트라디노이에서">
+  <meta name="twitter:image" content="https://dctck.github.io/DavidSoyoung-Wedding/Photo_Header.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400&family=Ms+Madi&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+
+
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif; /* Fallback font */
+      background-color: black;
+      color: white;
+      line-height: 1.5;
+      overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+    /* Prevent scroll when modal is open */
+    body.modal-open {
+        overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%; /* Fill available space */
+      max-width: 480px; /* Constrain width */
+      margin: 0 auto; /* Center the container */
+      min-height: 100vh;
+      background-color: black;
+      position: relative;
+      overflow: hidden; /* Clip children */
+    }
+
+    /* Font classes */
+    .font-script { font-family: 'Ms Madi', cursive; }
+    .font-korean { font-family: 'Gowun Batang', serif; }
+
+    /* Basic Image Styling */
+    .image-container {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        background-color: #333; /* Fallback */
+    }
+    .page-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    .page-image.clickable {
+        cursor: pointer;
+    }
+
+    /* Simple error placeholder */
+     .image-container .placeholder-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #a0a0a0;
+      text-align: center;
+      font-size: 0.875rem;
+      display: none; /* Hidden by default */
+      z-index: 1;
+      background-color: rgba(0,0,0,0.5);
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+    .image-container.error .placeholder-text { display: block; }
+    .image-container.error .page-image { display: none; }
+
+
+    /* Header section */
+    .header {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 393 / 852;
+        background-color: #333;
+        overflow: hidden;
+       }
+    .header-bg { position: absolute; inset: 0; }
+    .header-bg .page-image { object-fit: cover; }
+
+    .header-content {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1.5rem;
+      z-index: 2;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+      justify-content: space-between;
+    }
+    .header-subtitle { font-size: 0.875rem; font-weight: 300; }
+
+    /* Header Graphic Image Styling */
+    #headerGraphicImage {
+        position: absolute;
+        top: 500px; /* Position top edge at vertical center of parent */
+        padding-top: 10px;
+        left: 50%; /* Position left edge at horizontal center of parent */
+        /* === SUGGESTED FIX: Reduce the large negative vertical translation === */
+        /* Original: transform: translate(-50%, -400px); */
+        transform: translate(-50%, -400px); /* Shift up by 100px (Adjust as needed) */
+        min-width: 200px; /* Minimum width */
+
+        width: 100%; /* Fill container width */
+        height: auto; /* Maintain aspect ratio */
+        z-index: 1; /* Below text overlay (z-index: 2), above background image (z-index: 0 implicitly) */
+        display: block; /* Ensure it behaves like a block element */
+        pointer-events: none; /* Prevent image from interfering with text selection */
+    }
+    .header-names {
+        font-size: 0.875rem;
+        font-weight: 300;
+        /* Removed transform from user's latest code */
+        transform: translate(0, 20px);
+    }
+
+    /* Main photo section REMOVED */
+
+    /* Photo gallery */
+    .gallery-container { width: 100%; padding: 2px; background-color: black; margin-top: 40px; margin-bottom: 40px; } /* Added margins */
+    .gallery {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* UPDATED: Added fifth row for Photo1 */
+        grid-template-rows: auto auto auto auto auto;
+        gap: 2px;
+        width: 100%;
+    }
+    .gallery-item {
+        position: relative;
+        border: 1px solid black;
+    }
+
+    /* Specific gallery items grid positioning and aspect ratios */
+    .gallery-item-1 { grid-column: 1 / 3; grid-row: 1; aspect-ratio: 1.5 / 1; } /* Photo2 */
+    .gallery-item-2 { grid-column: 1; grid-row: 2; aspect-ratio: 1 / 1; }    /* Photo3 */
+    .gallery-item-3 { grid-column: 2; grid-row: 2 / 4; aspect-ratio: 1 / 2; } /* Photo4 */
+    .gallery-item-4 { grid-column: 1; grid-row: 3 / 5; aspect-ratio: 1 / 2; } /* Photo5 */
+    .gallery-item-5 { grid-column: 2; grid-row: 4; aspect-ratio: 1 / 1; }    /* Photo6 */
+    /* ADDED: Style for the new gallery item holding Photo1 */
+    .gallery-item-6 { grid-column: 1 / 3; grid-row: 5; aspect-ratio: 1.5 / 1; } /* Photo1 */
+
+
+    /* Invitation section */
+    .invitation { width: 100%; padding: 2rem; text-align: center; }
+    .invitation-title { font-size: 1.875rem; margin-bottom: 1.5rem; }
+    .invitation-names {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 3.5rem;
+    }
+    .invitation-names span {
+        font-weight: 700;
+        font-size: 1.1em;
+    }
+    .invitation .invitation-body p {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+        color: #eee;
+    }
+    /* Details Section Styling */
+    .invitation .details {
+        margin-top: 4.5rem;
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: #eee;
+        padding: 1.5rem;
+        border: 1px solid #555;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.03);
+        text-align: left;
+        margin-bottom: 1.5rem;
+    }
+    .detail-item {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0 1em;
+        align-items: baseline;
+        margin-bottom: 0.8rem;
+    }
+     .detail-item:last-child {
+        margin-bottom: 0;
+    }
+    .detail-label {
+        font-weight: 700;
+        color: white;
+        white-space: nowrap;
+    }
+    .detail-value {
+        color: #eee;
+    }
+    .address-text-wrapper {
+        cursor: pointer;
+    }
+    .transport-info {
+        font-size: 1.075rem;
+        color: #ccc;
+        display: block;
+        margin-top: 0.25rem;
+    }
+    /* Inline Copy Icon Styling */
+    .copy-icon-inline {
+        display: inline-block;
+        width: 0.9em; height: 0.9em;
+        stroke: #aaa; fill: none; stroke-width: 2;
+        stroke-linecap: round; stroke-linejoin: round;
+        margin-left: 0.4em; vertical-align: baseline;
+        cursor: pointer; transition: stroke 0.2s;
+    }
+    .copy-icon-inline:hover { stroke: #eee; }
+
+
+    /* See you there section */
+    .see-you { width: 100%; padding: 1.5rem 0; text-align: center; }
+    .see-you-title { font-size: 1.875rem; margin-bottom: 1.5rem; padding: 0 1.5rem; }
+    .see-you-photo {
+      width: 100%; max-width: 100%;
+      height: 300px; /* Fixed height */
+      margin: 0 auto;
+      margin-bottom: 2rem;
+      position: relative;
+      padding: 0 2px;
+    }
+    .see-you-photo .image-container { height: 100%; }
+    .see-you-photo .page-image { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Add to Calendar Button Container */
+    .calendar-buttons-container {
+        margin-top: 32px; margin-bottom: 40px;
+        display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+    }
+
+    /* Add to Calendar Button Styling */
+    .calendar-button {
+        display: inline-flex; align-items: center; gap: 0.5rem;
+        font-family: 'Gowun Batang', serif; background-color: transparent;
+        color: #ccc; border: 1px solid #888; padding: 8px 16px;
+        border-radius: 5px; cursor: pointer; font-size: 0.9rem;
+        text-decoration: none; transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .calendar-button:hover { background-color: rgba(255, 255, 255, 0.1); color: white; border-color: #aaa; }
+    .calendar-button:active { background-color: rgba(255, 255, 255, 0.2); }
+    .calendar-button svg { width: 1.1em; height: 1.1em; vertical-align: middle; }
+    .calendar-button svg.icon-stroke { stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+
+    /* Couple section */
+    /* UPDATED: Now only contains one item */
+    .couple { width: 100%; display: grid; grid-template-columns: 1fr; gap: 4px; margin-bottom: 2rem; padding: 0 2px; }
+    .couple-item { position: relative; }
+    .couple-photo { width: 100%; height: 300px; }
+
+
+    /* Contact section */
+    .contact {
+        width: 100%;
+        padding: 1.5rem;
+        text-align: center;
+        margin-bottom: 4rem;
+       }
+    .contact-title { font-size: 1.375rem; margin-bottom: 1rem; }
+    .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; font-size: 0.875rem; }
+    .contact-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .contact-side-title {
+        font-weight: normal;
+        font-size: 0.875rem;
+        color: #aaa;
+    }
+    .contact-name {
+        font-weight: 700;
+        font-size: 1.125rem;
+        margin-top: 1rem; /* Currently 32px */
+    }
+    .contact-phone {
+        font-weight: normal;
+        font-size: 0.9rem;
+        color: #ddd;
+       }
+    .copy-button {
+        font-family: 'Gowun Batang', serif; background-color: transparent; color: #ccc;
+        border: 1px solid #888; padding: 7px 14px; border-radius: 5px; cursor: pointer;
+        font-size: 0.9rem;
+        transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+        margin-top: 0.5rem;
+    }
+    .copy-button:hover { background-color: rgba(255, 255, 255, 0.1); color: white; border-color: #aaa; }
+    .copy-button:active { background-color: rgba(255, 255, 255, 0.2); }
+
+    /* Quote Section Styling */
+    .quote-section {
+        width: 100%;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        margin-top: 1rem;
+    }
+    .quote-text {
+        font-family: 'Abhaya Libre', serif;
+        font-size: 1.375rem;
+        font-style: italic;
+        color: #ccc;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+    .quote-attribution {
+        font-family: 'Abhaya Libre', serif;
+        font-size: 1.125rem;
+        font-style: italic;
+        color: #ccc;
+        line-height: 1.7;
+        margin-top: 0.5rem;
+    }
+
+
+    /* Snackbar Styling */
+    #snackbar {
+      visibility: hidden;
+      min-width: 200px;
+      background-color: #333; color: #fff;
+      text-align: center; border-radius: 4px; padding: 12px; position: fixed;
+      z-index: 100; left: 50%; transform: translateX(-50%); bottom: 30px;
+      opacity: 0; transition: opacity 0.5s, visibility 0.5s;
+      font-family: 'Gowun Batang', serif;
+    }
+    #snackbar.show { visibility: visible; opacity: 1; }
+
+    /* Image Modal Styling */
+    .image-modal {
+        position: fixed; inset: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 1000; display: none; flex-direction: column;
+        align-items: center; justify-content: center; padding: 1rem;
+        cursor: pointer;
+    }
+    .image-modal-content {
+        position: relative; width: auto; height: auto;
+        max-width: 95vw; max-height: 90vh; display: flex;
+        align-items: center; justify-content: center; cursor: default;
+    }
+    .image-modal-image {
+        display: block; max-width: 100%; max-height: 100%;
+        width: auto; height: auto; object-fit: contain;
+    }
+    .image-modal-close-btn {
+        position: absolute; top: 15px; right: 25px;
+        background: rgba(50, 50, 50, 0.7); border: none; color: white;
+        font-size: 2rem; line-height: 1; padding: 0.25rem 0.75rem;
+        border-radius: 5px; cursor: pointer; transition: background-color 0.2s;
+        z-index: 1001;
+    }
+    .image-modal-close-btn:hover { background-color: rgba(80, 80, 80, 0.9); }
+
+
+    /* Utility classes */
+    .font-bold { font-weight: 700; }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="header">
+      <div class="header-bg image-container" id="headerContainer">
+        <img src="Photo_Header.png" alt="Wedding header background" class="page-image" id="headerImage" onerror="this.parentElement.classList.add('error'); this.style.display='none';">
+        <div class="placeholder-text">Header Image</div>
+      </div>
+      <img src="Our_Wedding_Graphic.png" alt="Our Wedding Graphic" id="headerGraphicImage" onerror="this.style.display='none';">
+      <div class="header-content">
+        <p class="header-subtitle font-korean">저희 결혼합니다!</p>
+        <p class="header-names font-korean">장진수 & 진소영</p>
+      </div>
+    </div>
+
+    <div class="gallery-container">
+      <div class="gallery">
+        <div class="gallery-item gallery-item-1 image-container" id="galleryContainer1">
+            <img src="Photo2.png" alt="Gallery photo 2" class="page-image clickable" id="galleryImage1" onclick="openImageModal(this.src)" onerror="this.parentElement.classList.add('error'); this.style.display='none';">
+           <div class="placeholder-text">Photo 2</div>
+        </div>
+        <div class="gallery-item gallery-item-2 image-container" id="galleryContainer2">
+            <img src="Photo3.png" alt="Gallery photo 3" class="page-image clickable" id="galleryImage2" onclick="openImageModal(this.src)" onerror="this.parentElement.classList.add('error'); this.style.display='none';">
+            <div class="placeholder-text">Photo 3</div>
+        </div>
+         <div class="gallery-item gallery-item-3 image-container" id="galleryContainer3">
+            <img src="Photo4.png" alt="Gallery photo 4" class="page-image clickable" id="galleryImage3" onclick="openImageModal(this.src)" onerror="this.parentElement.classList.add('error'); this.style.display='none';">
+           <div class="placeholder-text">Photo 4</div>
+        </div>
+         <div class="gallery-item gallery-item-4 image-container" id="galleryContainer4">
+            <img src="Photo5.png" alt="Gallery photo 5" class="page-image clickable" id="galleryImage4" onclick="openImageModal(this.src)" onerror="this.parentElement.classList.add('error'); this.style.display='none';">
+           <div class="placeholder-text">Photo 5</div>
+        </div>
+         <div class="gallery-item gallery-item-5 image-container" id="galleryContainer5">
+            <img src="Photo6.png" alt="Gallery photo 6" class="page-image clickable" id="galleryImage5" onclick="openImageModal(this.src)" onerror="this.parentElement.classList.add('error'); this.style.display='none';">
+            <div class="placeholder-text">Photo 6</div>
+        </div>
+        <div class="gallery-item gallery-item-6 image-container" id="galleryContainer6">
+            <img src="Photo1.png" alt="Gallery photo 1" class="page-image clickable" id="galleryImage6" onclick="openImageModal(this.src)" onerror="this.parentElement.classList.add('error'); this.style.display='none';">
+           <div class="placeholder-text">Photo 1</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="invitation">
+      <h2 class="invitation-title font-script">Invitation</h2>
+      <div class="font-korean">
+        <div class="invitation-names">
+            장석정 · 유은경 의 아들 <span>장진수</span><br>
+            진주환 · 은정화 의 딸 <span>진소영</span>
+        </div>
+        <div class="invitation-body">
+            <p>
+                6년 전, 미시간의 새하얀 눈이 내리던 겨울에<br>
+                처음 만난 저희는<br>
+                서로에게 봄날의 따스한 햇살이 되어 주었습니다.
+            </p>
+            <p>
+                함께한 수많은 사계절을 지나<br>
+                이제 두 사람은 한마음으로<br>
+                소중한 가족분들을 모시고<br>
+                결혼식을 올리게 되었습니다.
+            </p>
+            <p>
+                미국에 머물며<br>
+                자주 찾아뵙지 못한 아쉬움이 크지만,<br>
+                이 자리를 통해 인사드릴 수 있어<br>
+                기쁘고 감사합니다.
+            </p>
+            <p>
+                저희가 시작하는 이 소중한 순간에<br>
+                함께해 주신다면,<br>
+                그 축복을 마음 깊이 간직하며<br>
+                더 따뜻하고 행복한 삶을 만들어가겠습니다.
+            </p>
+        </div>
+        <div class="details">
+            <div class="detail-item">
+                <span class="detail-label">일시:</span>
+                <span class="detail-value">5월 31일 (토) 오후 5시</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">장소:</span>
+                <span class="detail-value">
+                    트라디노이<br>
+                    <span class="address-text-wrapper clickable" onclick="copyToClipboardById('addressText', '주소')">
+                        <span id="addressText">서울 강남구 도곡로 99길 16</span>
+                    </span>, 6층
+                    <svg class="copy-icon-inline" onclick="copyToClipboardById('addressText', '주소')" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">교통:</span>
+                <span class="detail-value">식장 1층 주차장<br>
+                    <span class="transport-info"><b>삼성역</b> 혹은 <b>대치역</b> 지하철역에서 도보로 약 15분</span>
+                </span>
+            </div>
+        </div>
+        </div>
+      </div>
+
+    <div class="see-you">
+      <h2 class="see-you-title font-script">See you there</h2>
+
+      <div class="calendar-buttons-container">
+          <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=%EC%9E%A5%EC%A7%84%EC%88%98%20%EC%A7%84%EC%86%8C%EC%98%81%20%EA%B2%B0%ED%98%BC%EC%8B%9D&dates=20250531T080000Z/20250531T110000Z&details=Join%20us%20for%20the%20wedding%20of%20%EC%9E%A5%EC%A7%84%EC%88%98%20%26%20%EC%A7%84%EC%86%8C%EC%98%81%21&location=%ED%8A%B8%EB%9D%BC%EB%94%94%EB%85%B8%EC%9D%B4%2C%20%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EB%8F%84%EA%B3%A1%EB%A1%9C%2099%EA%B8%B8%2016%2C%206%EC%B8%B5&ctz=Asia/Seoul" target="_blank" rel="noopener noreferrer" class="calendar-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                <path fill="#EA4335" d="M24 9.5c3.48 0 6.44 1.17 8.86 3.39l6.68-6.68C35.33 2.47 30.06 0 24 0 14.88 0 7.18 5.44 3.1 13.05l7.63 5.91C12.61 13.28 17.94 9.5 24 9.5z"/>
+                <path fill="#4285F4" d="M46.14 24.49c0-1.69-.15-3.31-.43-4.88H24v9.25h12.45c-.54 3-.21 6.3-2.7 8.64l7.32 5.71c4.2-3.87 6.56-9.44 6.56-16.04z"/>
+                <path fill="#FBBC05" d="M10.73 28.96C10.22 27.47 10 25.8 10 24s.22-3.47.73-4.96l-7.63-5.91C1.16 16.6 0 20.16 0 24s1.16 7.4 3.1 10.87l7.63-5.91z"/>
+                <path fill="#34A853" d="M24 48c6.06 0 11.33-1.97 15.14-5.37l-7.32-5.71c-2.07 1.39-4.72 2.22-7.82 2.22-6.06 0-11.33-3.78-13.27-8.95l-7.63 5.91C7.18 42.56 14.88 48 24 48z"/>
+                <path fill="none" d="M0 0h48v48H0z"/>
+              </svg>
+              구글 캘린더에 저장하기
+          </a>
+          </div>
+
+      <div class="see-you-photo" id="parallaxContainer">
+          <div class="image-container" id="seeYouContainer">
+              <img src="Photo8.png" alt="See you there photo 8" class="page-image clickable" id="seeYouImage" onclick="openImageModal(this.src)" onerror="this.parentElement.classList.add('error'); this.style.display='none';">
+             <div class="placeholder-text">Photo 8</div>
+          </div>
+      </div>
+    </div>
+
+    <div class="contact">
+      <p class="contact-title font-korean">마음 전하실 곳</p>
+      <div class="contact-grid font-korean">
+        <div class="contact-item">
+          <p class="contact-side-title font-korean">신랑측</p>
+          <p class="contact-name">장진수</p>
+          <div class="contact-phone">하나은행</div>
+          <div class="contact-phone" id="groomPhone">840-910090-53307</div>
+          <button class="copy-button" onclick="copyToClipboardById('groomPhone', '계좌번호')">복사</button>
+
+          <p class="contact-name">장석정 · 유은경</p>
+          <div class="contact-phone">하나은행</div>
+          <div class="contact-phone" id="groomParentPhone">840-910125-95507</div>
+          <button class="copy-button" onclick="copyToClipboardById('groomParentPhone', '계좌번호')">복사</button>
+                
+        </div>
+        <div class="contact-item">
+          <p class="contact-side-title font-korean">신부측</p>
+            <p class="contact-name">진소영</p>
+            <div class="contact-phone">우리은행</div>
+          <div class="contact-phone" id="bridePhone">1002-749-122234</div>
+          <button class="copy-button" onclick="copyToClipboardById('bridePhone', '계좌번호')">복사</button>
+
+          <p class="contact-name">진주환 · 은정화</p>
+          <div class="contact-phone">우리은행</div>
+          <div class="contact-phone" id="brideParentPhone">1002-265-186768</div>
+          <button class="copy-button" onclick="copyToClipboardById('brideParentPhone', '계좌번호')">복사</button>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="couple">
+      <div class="couple-item">
+        <div class="couple-photo image-container" id="coupleContainer1">
+            <img src="Photo7.png" alt="Couple photo 7" class="page-image clickable" id="coupleImage1" onclick="openImageModal(this.src)" onerror="this.parentElement.classList.add('error'); this.style.display='none';">
+           <div class="placeholder-text">Photo 7</div>
+        </div>
+      </div>
+      </div>
+
+    <div class="quote-section">
+        <p class="quote-text">“We’re all traveling through time together,<br> every day of our lives.<br> All we can do is do our best<br> to relish this remarkable ride.”</p>
+        <p class="quote-attribution">- About Time</p>
+    </div>
+
+  </div> <div class="image-modal" id="imageModal" onclick="closeImageModal()">
+      <button class="image-modal-close-btn" onclick="closeImageModal(event)">&times;</button>
+      <div class="image-modal-content" onclick="event.stopPropagation()">
+          <img src="" alt="Full screen image" class="image-modal-image" id="modalImage">
+      </div>
+  </div>
+
+  <div id="snackbar">복사되었습니다.</div>
+
+  <script>
+    // --- Image Modal Script ---
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalCloseBtn = document.querySelector('.image-modal-close-btn');
+
+    function openImageModal(src) {
+        if (!imageModal || !modalImage) return;
+        modalImage.src = src;
+        imageModal.style.display = 'flex';
+        document.body.classList.add('modal-open');
+    }
+
+    function closeImageModal(event) {
+        if (event) event.stopPropagation();
+        if (!imageModal) return;
+        imageModal.style.display = 'none';
+        modalImage.src = '';
+        document.body.classList.remove('modal-open');
+    }
+
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeImageModal);
+    }
+    // --- END Image Modal Script ---
+
+
+    // --- Copy Text Functionality ---
+    function copyToClipboardById(elementId, typeLabel = '텍스트') { // Added default label
+      const elementToCopy = document.getElementById(elementId);
+      if (!elementToCopy) {
+          console.error("Element not found for ID:", elementId);
+          return;
+      };
+
+      // === THIS LINE NOW DIRECTLY GETS ONLY THE TARGET ELEMENT'S TEXT ===
+      let textToCopy = elementToCopy.textContent.trim(); // Directly get text content
+      // === The old logic to add bank name was removed ===
+
+      if (!textToCopy) {
+          console.error("No text found to copy for ID:", elementId);
+          return;
+      }
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            const snackbar = document.getElementById("snackbar");
+            snackbar.textContent = typeLabel + " 복사되었습니다.";
+            snackbar.className = "show";
+            setTimeout(() => { snackbar.className = snackbar.className.replace("show", ""); }, 3000);
+        }).catch(err => {
+            console.error(`Failed to copy ${typeLabel}: `, err);
+            const snackbar = document.getElementById("snackbar");
+            snackbar.textContent = typeLabel + " 복사 실패";
+            snackbar.className = "show";
+            setTimeout(() => { snackbar.className = snackbar.className.replace("show", ""); }, 3000);
+        });
+    }
+    // --- END Copy Text Functionality ---
+
+  </script>
+</body>
+</html>
