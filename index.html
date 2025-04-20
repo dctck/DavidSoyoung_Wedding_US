@@ -349,79 +349,72 @@
         margin-top: 0.5rem;
     }
 
-    /* --- Gifting Section Styles --- */
     .gifting-section {
-        width: 100%;
-        padding: 2.5rem 1.5rem; /* Added more padding */
-        text-align: center;
-        margin-top: 2rem; /* Space above */
-        margin-bottom: 4rem; /* Space below */
-    }
-    .gifting-section h2 {
-        font-size: 0.95rem;
-        margin-bottom: 1.5rem;
-        font-weight: 700;
-    }
-    .gifting-buttons {
-        display: flex;
-        flex-direction: column; /* Stack buttons vertically */
-        align-items: center; /* Center buttons */
-        gap: 1rem; /* Space between buttons/items */
-        margin-top: 1rem;
-    }
-    .gift-button, .zelle-info {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        font-family: 'Gowun Batang', serif;
-        color: #eee; /* Lighter text */
-        /*border: 1px solid #888;*/
-        padding: 10px 20px; /* Slightly larger padding */
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 1rem; /* Slightly larger font */
-        text-decoration: none;
-        /*transition: background-color 0.2s, color 0.2s, border-color 0.2s;*/
-        min-width: 200px; /* Minimum width for better alignment */
-        text-align: center;
-    }
-    .gift-button:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: white;
-        border-color: #aaa;
-    }
-    .gift-button:active {
-        background-color: rgba(255, 255, 255, 0.2);
-    }
-    .venmo-button {
-        /*background-color: #0074DE; Venmo blue */
-        border-color: #fafafa;
-        color: white;
-    }
-    .venmo-button:hover {
-        /*background-color: #005cb7;*/
-        border-color: #1a5087;
-        color: white;
-    }
-    .zelle-info {
-        /*background-color: rgba(255, 255, 255, 0.05); /* Subtle background */
-        border: none;  
-        cursor: default; /* Not clickable itself */
-        flex-direction: column; /* Stack label and content */
-        gap: 0.4rem;
-        padding: 15px 20px;
-    }
-    .zelle-info span {
-        font-weight: bold;
-        font-size: 1.1em;
-        color: white;
-    }
-    .zelle-info .copy-button { /* Reuse existing copy button style */
-        margin-top: 0.6rem;
-        padding: 5px 12px; /* Smaller padding for inline button */
-        font-size: 0.85rem;
-    }
+    width: 100%;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+   
+}
+
+.gifting-section h2 {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem; /* Space below title */
+    font-weight: 700;
+}
+
+.gifting-buttons {
+    display: flex;
+    flex-direction: row; /* Arrange items side-by-side */
+    justify-content: center; /* Center the items horizontally */
+    align-items: flex-start; /* Align items top */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 2rem; /* Space between the two person blocks */
+    margin-top: 1rem;
+}
+
+.gift-person {
+    display: flex;
+    flex-direction: column; /* Stack label and button vertically */
+    align-items: center; /* Center items within the block */
+    min-width: 130px; /* Give some minimum width */
+}
+
+.gift-label {
+    font-size: 0.95rem; /* Adjust label size */
+    color: #ccc;
+    margin-bottom: 0.6rem; /* Space between label and button */
+}
+
+.gift-button {
+    display: inline-flex; /* Use inline-flex */
+    align-items: center;
+    justify-content: center;
+    font-family: 'Gowun Batang', serif;
+    color: #eee;
+    /* This creates the white outline */
+    border: 1px solid #888;
+    background-color: transparent; /* Ensure no background color */
+    padding: 8px 25px; /* Adjusted padding */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    text-align: center;
+    width: auto; /* Allow button to size to content */
+}
+
+.gift-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-color: #aaa;
+}
+
+.gift-button:active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
     /* --- END Gifting Section Styles --- */
 
     /* Snackbar Styling */
@@ -572,20 +565,25 @@
     </div>
 
      <div class="gifting-section">
-              <h2 class="font-korean">마음전하실 곳</h2>
-              <div class="gifting-buttons">
-                  <a href="https://venmo.com/dad-c" target="_blank" rel="noopener noreferrer" class="gift-button venmo-button">
-                      벤모 (@dad-c)
-                  </a>
-          
-                  <div class="zelle-info">
-                       Zelle <span id="zelleEmail">dcdsign227@gmail.com</span>
-                       <button class="copy-button" onclick="copyToClipboardById('zelleEmail', 'Zelle 이메일')">
-                          복사
-                       </button>
-                  </div>
-              </div>
-      </div>
+    <h2 class="font-korean">마음전하실 곳</h2>
+    <div class="gifting-buttons">
+
+        <div class="gift-person">
+            <div class="gift-label font-korean">신랑 장진수</div>
+            <a href="https://venmo.com/u/dad-c" target="_blank" rel="noopener noreferrer" class="gift-button">
+                보내기
+            </a>
+        </div>
+
+        <div class="gift-person">
+            <div class="gift-label font-korean">신부 진소영</div>
+            <a href="https://venmo.com/u/Soyoung-Jin-1" target="_blank" rel="noopener noreferrer" class="gift-button">
+                보내기
+            </a>
+        </div>
+
+        </div>
+        </div>
 
     <div class="couple">
       <div class="couple-item">
