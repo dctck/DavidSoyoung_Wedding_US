@@ -359,7 +359,7 @@
         border-top: 1px solid #444; /* Separator line */
     }
     .gifting-section h2 {
-        font-size: 1.375rem;
+        font-size: 0.95rem;
         margin-bottom: 1.5rem;
         font-weight: 700;
     }
@@ -396,17 +396,17 @@
         background-color: rgba(255, 255, 255, 0.2);
     }
     .venmo-button {
-        background-color: #0074DE; /* Venmo blue */
-        border-color: #0074DE;
+        /*background-color: #0074DE; Venmo blue */
+        border-color: #fafafa;
         color: white;
     }
     .venmo-button:hover {
-        background-color: #005cb7;
-        border-color: #005cb7;
+        /*background-color: #005cb7;*/
+        border-color: #1a5087;
         color: white;
     }
     .zelle-info {
-        background-color: rgba(255, 255, 255, 0.05); /* Subtle background */
+        /*background-color: rgba(255, 255, 255, 0.05); /* Subtle background */
         cursor: default; /* Not clickable itself */
         flex-direction: column; /* Stack label and content */
         gap: 0.4rem;
@@ -571,6 +571,22 @@
         <p class="quote-attribution">- About Time</p>
     </div>
 
+     <div class="gifting-section">
+              <h2 class="font-korean">마음전하실 곳</h2>
+              <div class="gifting-buttons">
+                  <a href="https://venmo.com/dad-c" target="_blank" rel="noopener noreferrer" class="gift-button venmo-button">
+                      벤모 (@dad-c)
+                  </a>
+          
+                  <div class="zelle-info">
+                       Zelle: <span id="zelleEmail">dcdsign227@gmail.com</span>
+                       <button class="copy-button" onclick="copyToClipboardById('zelleEmail', 'Zelle 이메일')">
+                          복사
+                       </button>
+                  </div>
+              </div>
+      </div>
+
     <div class="couple">
       <div class="couple-item">
         <div class="couple-photo image-container" id="coupleContainer1">
@@ -579,23 +595,6 @@
         </div>
       </div>
       </div>
-
-      <div class="gifting-section">
-          <h2 class="font-korean">마음전하실 곳</h2>
-          <div class="gifting-buttons">
-              <a href="https://venmo.com/dad-c" target="_blank" rel="noopener noreferrer" class="gift-button venmo-button">
-                  Send via Venmo (@dad-c)
-              </a>
-      
-              <div class="zelle-info">
-                   Zelle: <span id="zelleEmail">dcdsign227@gmail.com</span>
-                   <button class="copy-button" onclick="copyToClipboardById('zelleEmail', 'Zelle 이메일')">
-                       이메일 복사 (Copy Email)
-                   </button>
-              </div>
-          </div>
-      </div>
-
     
   </div> <div class="image-modal" id="imageModal" onclick="closeImageModal()">
       <button class="image-modal-close-btn" onclick="closeImageModal(event)">&times;</button>
